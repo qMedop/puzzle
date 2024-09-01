@@ -45,3 +45,6 @@
   pointer-events: none;
   cursor: default;
 }
+.puzzle.mobile > div {
+  cursor: default;
+}
