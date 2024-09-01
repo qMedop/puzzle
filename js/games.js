@@ -1,4 +1,4 @@
-let grid = 12;
+let grid = 9;
 const board = document.querySelector("#board");
 let imageSrc = "img/puzzle-image/main2.jpg";
 
