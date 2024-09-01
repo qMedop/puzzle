@@ -24,8 +24,8 @@ class puzzleGame {
           height: this.board.clientHeight / this.grid + "px",
           backgroundPosition: `${
             (-pieceCol * this.board.clientWidth) / this.grid + "px"
-          } ${(-pieceRow * this.board.clientHeight) / this.grid + "px"}`,
-          backgroundSize: `${this.board.clientWidth}px ${this.board.clientHeight}px`,
+          } ${(-pieceRow * this.board.clientWidth) / this.grid + "px"}`,
+          backgroundSize: `${this.board.clientWidth}px ${this.board.clientWidth}px`,
           order: index,
         };
         this.game.push(image);
