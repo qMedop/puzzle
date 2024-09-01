@@ -36,6 +36,7 @@ class puzzleGame {
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
+    this._appendImages(this.game);
   }
   _appendImages(array) {
     if (this.mobile) this.board.classList.add("mobile");
@@ -46,8 +47,8 @@ class puzzleGame {
       let span = document.createElement("span");
       img.style.backgroundImage = `url(${this.imgSrc})`;
       img.style.width = image.width;
-      img.style.height = image.height;
-      img.style.top = (r * this.board.clientHeight) / this.grid + "px";
+      img.style.height = image.width;
+      img.style.top = (r * this.board.clientWidth) / this.grid + "px";
       img.style.left = (c * this.board.clientWidth) / this.grid + "px";
       img.style.backgroundPosition = image.backgroundPosition;
       img.style.backgroundSize = image.backgroundSize;
