@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.puzzle {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+.puzzle > div {
+  position: absolute;
+  transition: 300ms;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.puzzle > div > span {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-family: sans-serif;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  font-size: 12px;
+  text-align: center;
+  user-select: none;
+}
+.puzzle:not(.win) .blanket:not(.win) {
+  z-index: -1;
+  background-image: initial !important;
+  background-color: white;
+}
+.blanket span {
+  display: none;
+}
+.puzzle.win span {
+  display: none;
+}
+.puzzle.win > div {
+  border: none;
+  pointer-events: none;
+  cursor: default;
+}
