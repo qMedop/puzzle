@@ -1,6 +1,6 @@
-let grid = 16;
+let grid = 12;
 const board = document.querySelector("#board");
-let imageSrc = "img/puzzle-image/main2.jpg";
+let imageSrc = "img/main.jpg";
 
 class puzzleGame {
   constructor(board, grid, imgSrc) {
