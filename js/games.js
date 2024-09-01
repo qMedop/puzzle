@@ -38,15 +38,21 @@ class puzzleGame {
       );
     this._appendImages(this.game);
     window.addEventListener("resize", () => {
-      this.board.querySelectorAll("#board > div").forEach((img, index) => {
-        let r = Math.floor(index / this.grid);
-        let c = index % this.grid;
-        board.style.height = (this.board.clientWidth / this.grid) * grid + "px";
-        img.style.width = this.board.clientWidth / this.grid + "px";
-        img.style.height = this.board.clientWidth / this.grid + "px";
-        img.style.top = (r * this.board.clientWidth) / this.grid + "px";
-        img.style.left = (c * this.board.clientWidth) / this.grid + "px";
-      });
+      this._handleResize();
+    });
+    window.addEventListener("load", () => {
+      this._handleResize();
+    });
+  }
+  _handleResize() {
+    this.board.querySelectorAll("#board > div").forEach((img, index) => {
+      let r = Math.floor(index / this.grid);
+      let c = index % this.grid;
+      board.style.height = (this.board.clientWidth / this.grid) * grid + "px";
+      img.style.width = this.board.clientWidth / this.grid + "px";
+      img.style.height = this.board.clientWidth / this.grid + "px";
+      img.style.top = (r * this.board.clientWidth) / this.grid + "px";
+      img.style.left = (c * this.board.clientWidth) / this.grid + "px";
     });
   }
   _appendImages(array) {
