@@ -1,6 +1,6 @@
 let grid = 6;
 const board = document.querySelector("#board");
-let imageSrc = "img/main.jpg";
+let imageSrc = "img/puzzle-image/main2.jpg";
 
 class puzzleGame {
   constructor(board, grid, imgSrc) {
@@ -37,6 +37,17 @@ class puzzleGame {
         navigator.userAgent
       );
     this._appendImages(this.game);
+    window.addEventListener("resize", () => {
+      this.board.querySelectorAll("#board > div").forEach((img, index) => {
+        let r = Math.floor(index / this.grid);
+        let c = index % this.grid;
+        board.style.height = (this.board.clientWidth / this.grid) * grid + "px";
+        img.style.width = this.board.clientWidth / this.grid + "px";
+        img.style.height = this.board.clientWidth / this.grid + "px";
+        img.style.top = (r * this.board.clientWidth) / this.grid + "px";
+        img.style.left = (c * this.board.clientWidth) / this.grid + "px";
+      });
+    });
   }
   _appendImages(array) {
     if (this.mobile) this.board.classList.add("mobile");
