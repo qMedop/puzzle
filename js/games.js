@@ -1,6 +1,6 @@
 let grid = 12;
 const board = document.querySelector("#board");
-let imageSrc = "img/main.jpg";
+let imageSrc = "img/puzzle-image/main2.jpg";
 
 class puzzleGame {
   constructor(board, grid, imgSrc) {
@@ -32,9 +32,14 @@ class puzzleGame {
       }
     }
     this.game.sort(() => Math.random() - 0.5);
+    this.mobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
     this._appendImages(this.game);
   }
   _appendImages(array) {
+    if (this.mobile) this.board.classList.add("mobile");
     array.forEach((image, index) => {
       let r = Math.floor(index / this.grid);
       let c = index % this.grid;
@@ -52,11 +57,16 @@ class puzzleGame {
       this.board.appendChild(img);
       span.textContent = image.order + 1;
       img.appendChild(span);
-      console.log(img);
       // Add click event listener to move this.
-      img.addEventListener("click", () => {
-        this._movePiece(img.dataset.index);
-      });
+      if (this.mobile) {
+        img.addEventListener("touchend", () => {
+          this._movePiece(img.dataset.index);
+        });
+      } else {
+        img.addEventListener("click", () => {
+          this._movePiece(img.dataset.index);
+        });
+      }
     });
     this._defineBlanket();
   }
